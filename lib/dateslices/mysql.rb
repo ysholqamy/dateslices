@@ -13,25 +13,25 @@ module Dateslices
           "MONTH(#{column})"
         when :second
           format ||= '%Y-%m-%d %H:%i:%S UTC'
-          "DATE_FORMAT(#{column}, #{format})"
+          "DATE_FORMAT(#{column}, '#{format}')"
         when :minute
           format ||= '%Y-%m-%d %H:%i:00 UTC'
-          "DATE_FORMAT(#{column}, #{format})"
+          "DATE_FORMAT(#{column}, '#{format}')"
         when :hour
           format ||= '%Y-%m-%d %H:00:00 UTC'
-          "DATE_FORMAT(#{column}, #{format})"
+          "DATE_FORMAT(#{column}, '#{format}')"
         when :day
           format ||= '%Y-%m-%d 00:00:00 UTC'
-          "DATE_FORMAT(#{column}, #{format})"
+          "DATE_FORMAT(#{column}, '#{format}')"
         when :month
           format ||= '%Y-%m-01 00:00:00 UTC'
-          "DATE_FORMAT(#{column}, #{format})"
+          "DATE_FORMAT(#{column}, '#{format}')"
         when :year
           format ||= '%Y-01-01 00:00:00 UTC'
-          "DATE_FORMAT(#{column}, #{format})"
+          "DATE_FORMAT(#{column}, '#{format}')"
         when :week # Sigh...
           format ||= '%Y-%m-%d 00:00:00 UTC'
-          "DATE_FORMAT( date_sub( created_at, interval ((weekday( created_at ) + 1)%7) day ), #{format})"
+          "DATE_FORMAT( date_sub( created_at, interval ((weekday( created_at ) + 1)%7) day ), '#{format}')"
         else
           throw "Unknown time filter #{field}"
       end

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Dateslices::VERSION
   s.authors     = ['Will Schenk']
   s.email       = ['will@happyfuncorp.com']
-  s.homepage    = 'https://github.com/sublimeguile/dateslices'
+  s.homepage    = 'https://github.com/ysholqamy/dateslices'
   s.summary     = 'A Rails 4 ActiveRecord plugin that adds group_by_day, group_by_month, etc.'
   s.description = 'A Rails 4 ActiveRecord plugin that adds group_by_day, group_by_month, etc. Not timezone aware, but supports sqlite.'
   s.license     = 'MIT'
