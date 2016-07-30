@@ -1,8 +1,7 @@
 require 'rails_helper'
 require 'tester'
 
-databases = [{ :adapter => 'mysql', :database => 'dateslice_test', :user => 'root'},
-             { :adapter => 'postgresql', :database => 'dateslice_test'},
+databases = [{ :adapter => 'mysql', :database => 'dateslice_test', :user => 'root', :password => 'joejoe64'},
              { :adapter => 'sqlite3', :database => 'db/test.sqlite3'}]
 
 formats = ['groupdate', 'dateslices']

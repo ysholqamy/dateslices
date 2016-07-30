@@ -1,7 +1,7 @@
 module Dateslices
   module Mysql
 
-    def self.time_filter(column, field)
+    def self.time_filter(column, field, format=nil)
       case field
         when :hour_of_day
           "(EXTRACT(HOUR from #{column}))"
@@ -12,19 +12,26 @@ module Dateslices
         when :month_of_year
           "MONTH(#{column})"
         when :second
-          "DATE_FORMAT(#{column}, '%Y-%m-%d %H:%i:%S UTC')"
+          format ||= '%Y-%m-%d %H:%i:%S UTC'
+          "DATE_FORMAT(#{column}, #{format})"
         when :minute
-          "DATE_FORMAT(#{column}, '%Y-%m-%d %H:%i:00 UTC')"
+          format ||= '%Y-%m-%d %H:%i:00 UTC'
+          "DATE_FORMAT(#{column}, #{format})"
         when :hour
-          "DATE_FORMAT(#{column}, '%Y-%m-%d %H:00:00 UTC')"
+          format ||= '%Y-%m-%d %H:00:00 UTC'
+          "DATE_FORMAT(#{column}, #{format})"
         when :day
-          "DATE_FORMAT(#{column}, '%Y-%m-%d 00:00:00 UTC')"
+          format ||= '%Y-%m-%d 00:00:00 UTC'
+          "DATE_FORMAT(#{column}, #{format})"
         when :month
-          "DATE_FORMAT(#{column}, '%Y-%m-01 00:00:00 UTC')"
+          format ||= '%Y-%m-01 00:00:00 UTC'
+          "DATE_FORMAT(#{column}, #{format})"
         when :year
-          "DATE_FORMAT(#{column}, '%Y-01-01 00:00:00 UTC')"
+          format ||= '%Y-01-01 00:00:00 UTC'
+          "DATE_FORMAT(#{column}, #{format})"
         when :week # Sigh...
-          "DATE_FORMAT( date_sub( created_at, interval ((weekday( created_at ) + 1)%7) day ), '%Y-%m-%d 00:00:00 UTC')"
+          format ||= '%Y-%m-%d 00:00:00 UTC'
+          "DATE_FORMAT( date_sub( created_at, interval ((weekday( created_at ) + 1)%7) day ), #{format})"
         else
           throw "Unknown time filter #{field}"
       end

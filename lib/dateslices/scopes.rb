@@ -8,6 +8,8 @@ module Dateslices
 
         column = args[0].blank? ? 'created_at' : args[0]
 
+        format = args[3]
+
         aggregation = args[1].blank? ? 'count' : args[1]
 
         aggregation_column = args[2].blank? ? '*' : args[2]
@@ -20,7 +22,7 @@ module Dateslices
                         when 'PostgreSQL', 'PostGIS'
                           Dateslices::Postgresql.time_filter(column, field)
                         when 'MySQL', 'Mysql2'
-                          Dateslices::Mysql.time_filter(column, field)
+                          Dateslices::Mysql.time_filter(column, field, format)
                         else
                           throw "Unknown database adaptor #{connection.adapter_name}"
                       end
